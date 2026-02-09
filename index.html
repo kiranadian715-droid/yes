@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surat Untukmu</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    background: black;
+    color: white;
+}
+
+.page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Halaman surat */
+#letter {
+    background: #f2f2f2;
+    color: black;
+    width: 80%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 15px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+/* Animasi muncul */
+.show {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HALAMAN PERTAMA -->
+<div id="page1" class="page">
+<div>
+<p id="typing"></p>
+<button onclick="openLetter()">Baca surat</button>
+</div>
+</div>
+
+<!-- HALAMAN KEDUA -->
+<div id="page2" class="page hidden">
+<div id="letter">
+<p>Ini surat buat kamu.</p>
+<p>Walaupun terlambat, Tetep harus di baca!!</p>
+<p>Terima kasih sudah menjadi kekasihkuuu yang paling kerennn!!</p>
+<p>Gak tau mau bilang berapa kali lagi kalau aku bener-bener bersyukur banget dipertemukan sama kamu.</p>
+<p>Kamu buat aku lebih hidup, lebih merasa dicintai, lebih merasa disayang — pokoknya kamu the best woman in the world!!!</p>
+<p>Aku harap kamu bakal terus sama aku selama yang kita bisa.</p>
+<p>Jangan nyerah kalau kita masih punya kesempatan untuk berjuang.</p>
+<p><b>I love you sooo bad, sayangkuu ♡</b></p>
+<p><i>— dari kekasihmu yang imut</i></p>
+
+<button onclick="goBack()">Kembali</button>
+</div>
+</div>
+
+<script>
+const text = "Haii sayanggg!! Maaf ya kemarin mungkin aku telat buat ngucapin hari jadi kita yang ke 3 bulan...";
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+    }
+}
+
+function openLetter() {
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+
+    setTimeout(() => {
+        document.getElementById("letter").classList.add("show");
+    }, 100);
+}
+
+function goBack() {
+    location.reload();
+}
+
+typeWriter();
+</script>
+
+</body>
+</html>
